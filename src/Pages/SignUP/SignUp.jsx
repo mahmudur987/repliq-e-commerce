@@ -8,7 +8,7 @@ const SignUp = () => {
     useContext(authContext);
   const [Error, SetError] = useState("");
   const naviget = useNavigate();
-
+  Setloading(false);
   const handleSignup = (e) => {
     Setloading(true);
     e.preventDefault();
@@ -103,7 +103,7 @@ users`,
 
   if (loading) {
     return (
-      <div>
+      <div className="min-h-screen flex justify-center items-center">
         <progress
           className="progress progress-secondary w-56"
           value="0"
@@ -154,6 +154,7 @@ users`,
                 placeholder="email"
                 className="input input-bordered"
                 name="name"
+                required
               />
             </div>
             <div className="form-control">
@@ -165,6 +166,7 @@ users`,
                 placeholder="phone Number"
                 className="input input-bordered"
                 name="phoneNumber"
+                required
               />
             </div>
             <div className="form-control">
@@ -176,6 +178,7 @@ users`,
                 placeholder="email"
                 className="input input-bordered"
                 name="email"
+                required
               />
             </div>
             <div className="form-control">
@@ -187,6 +190,7 @@ users`,
                 placeholder="password"
                 className="input input-bordered"
                 name="password"
+                required
               />
             </div>
             <label className="label">

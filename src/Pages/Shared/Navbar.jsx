@@ -8,8 +8,6 @@ const Navbar = () => {
   // console.log(user);
 
   const handleSignOut = () => {
-    Setuser(null);
-
     logout();
     then(() => {
       // Sign-out successful.

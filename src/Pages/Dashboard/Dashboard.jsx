@@ -19,7 +19,9 @@ const Dashboard = () => {
           Open drawer
         </label>
         {!admin && (
-          <p>this for admin. try to log In with admin Email and password</p>
+          <p className="text-red-400 text-5xl">
+            this for admin. try to log In with admin Email and password
+          </p>
         )}
         {admin && <Outlet></Outlet>}
       </div>

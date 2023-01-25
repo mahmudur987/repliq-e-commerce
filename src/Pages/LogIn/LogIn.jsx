@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { authContext } from "../../Context/UserContext";
 
 const LogIn = () => {
-  const { user, login, Setuser } = useContext(authContext);
+  const { user, login, Setloading } = useContext(authContext);
   const [Error, SetError] = useState("");
 
   const naviget = useNavigate();
@@ -28,9 +28,19 @@ cheakusers?phoneNumber=${phoneNumber}&password=${password}`
           toast.error(data.message);
           SetError(data.message);
         } else {
-          Setuser(data);
-          SetError("");
-          naviget("/");
+          login(data?.email, password)
+            .then((result) => {
+              const user = result.user;
+              console.log(user);
+              Setloading(false);
+              SetError("");
+              naviget("/");
+            })
+            .catch((err) => {
+              console.error(err);
+
+              toast.error("please register first");
+            });
         }
       });
 
@@ -58,6 +68,7 @@ cheakusers?phoneNumber=${phoneNumber}&password=${password}`
                 placeholder="Phone Number"
                 className="input input-bordered"
                 name="PhoneNumber"
+                required
               />
             </div>
             <div className="form-control">
@@ -69,6 +80,7 @@ cheakusers?phoneNumber=${phoneNumber}&password=${password}`
                 placeholder="password"
                 className="input input-bordered"
                 name="password"
+                required
               />
             </div>
             <p className="text-secondary">{Error}</p>
