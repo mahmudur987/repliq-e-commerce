@@ -1,5 +1,7 @@
 # Repliq-E-Commerce
 
+### admin phone number :01671706882 password:123456
+
 ## live site Link (Hosting)
 
 [Repliq-E-Commerce](https://repliq-e-commerce.web.app/).
