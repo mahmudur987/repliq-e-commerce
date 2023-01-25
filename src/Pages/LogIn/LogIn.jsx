@@ -57,8 +57,16 @@ cheakusers?phoneNumber=${phoneNumber}&password=${password}`
             a id nisi.
           </p>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
           <form onSubmit={handleLogin} className="card-body">
+            <p className="text-red-600 font-bold text-2xl">
+              {" "}
+              Admin Phone number:01671706882
+            </p>
+            <p className="text-red-600 font-bold text-2xl">
+              {" "}
+              Admin passwords:123456
+            </p>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Phone Number</span>
