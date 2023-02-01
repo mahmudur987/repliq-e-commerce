@@ -13,10 +13,15 @@ const HomeProducts = () => {
   // console.log(products);
 
   return (
-    <div className="my-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5 ">
-      {products.slice(0, 3).map((product, idx) => (
-        <Product key={idx} product={product}></Product>
-      ))}
+    <div>
+      <h1 className="text-5xl m-5 font-bold text-secondary border border-black p-3 ">
+        New Arrival{" "}
+      </h1>
+      <div className="my-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5 ">
+        {products.slice(0, 3).map((product, idx) => (
+          <Product key={idx} product={product}></Product>
+        ))}
+      </div>
     </div>
   );
 };

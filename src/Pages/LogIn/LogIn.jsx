@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { authContext } from "../../Context/UserContext";
 
 const LogIn = () => {
-  const { user, login, Setloading } = useContext(authContext);
+  const { user, login, Setloading, loading } = useContext(authContext);
   const [Error, SetError] = useState("");
 
   const naviget = useNavigate();
@@ -13,6 +13,7 @@ const LogIn = () => {
   console.log(user);
 
   const handleLogin = (e) => {
+    Setloading(true);
     e.preventDefault();
     const form = e.target;
     const phoneNumber = form.PhoneNumber.value;
@@ -46,6 +47,20 @@ cheakusers?phoneNumber=${phoneNumber}&password=${password}`
 
     console.log(phoneNumber, password);
   };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center">
+        <div
+          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+          role="status"
+        >
+          <span className="visually-hidden">O</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
