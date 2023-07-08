@@ -26,12 +26,15 @@ const Users = () => {
   }
   return (
     <div>
-      {allusers.map((x, i) => (
-        <div className="m-7 text-start p-5 border shadow-xl " key={i}>
-          <p className="text-3xl font-bold">Name :{x.displayName} </p>
-          <p className="text-3xl font-bold">Email :{x.email} </p>
-        </div>
-      ))}
+      <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl"> All Users</h1>
+      <div>
+        {allusers.map((x, i) => (
+          <div className="md:m-7 text-start p-5 border shadow-xl " key={i}>
+            <p className="md:text-2xl font-semibold">Name :{x.displayName} </p>
+            <p className="md:text-2xl font-semibold">Email :{x.email} </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
