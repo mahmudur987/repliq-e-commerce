@@ -1,17 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { authContext } from "../../Context/UserContext";
+import { Link } from "react-router-dom";
+import LoadingSpinner from "../../components/LoadingSpiner";
 
 const Cheakout = () => {
   const [carts, SetCarts] = useState([]);
   const { user } = useContext(authContext);
+
+  const [loading, setLoading] = useState(false);
+
   // console.log(user);
   useEffect(() => {
+    setLoading(true);
     const url = `https://repliq-e-commerce-server.vercel.app/
 booking?email=${user?.email}`;
     fetch(url)
       .then((res) => res.json())
-      .then((data) => SetCarts(data));
+      .then((data) => {
+        SetCarts(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        toast.error("server is busy");
+      });
   }, [user]);
   // console.log(carts);
 
@@ -31,6 +44,24 @@ booking?email=${user?.email}`;
         }
       });
   };
+  console.log(carts.length);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  if (carts.length === 0) {
+    return (
+      <div className="h-[400px] flex justify-center items-center">
+        <p>
+          Your cart is empty.{" "}
+          <Link className="btn btn-link" to={"/product"}>
+            start shoping{" "}
+          </Link>{" "}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="overflow-x-auto min-h-screen">
@@ -39,7 +70,7 @@ booking?email=${user?.email}`;
           <tr>
             <th> No</th>
             <th>Product Name</th>
-            <th> User Name</th>
+
             <th>Price</th>
             <th>Confirm</th>
             <th>Delete</th>
@@ -50,7 +81,6 @@ booking?email=${user?.email}`;
             <tr>
               <th>{idx + 1}</th>
               <td>{cart.productName}</td>
-              <td> {cart.userName} </td>
               <td> {cart.productPrice} </td>
               <td>
                 {" "}

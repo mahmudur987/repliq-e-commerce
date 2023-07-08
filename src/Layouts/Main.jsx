@@ -8,11 +8,11 @@ import { Toaster } from "react-hot-toast";
 const Main = () => {
   return (
     <div>
-      <Toaster></Toaster>
       <UserContext>
-        <Navbar></Navbar>
-        <Outlet></Outlet>
-        <Footer></Footer>
+        <Navbar />
+        <Outlet />
+        <Footer />
+        <Toaster />
       </UserContext>
     </div>
   );

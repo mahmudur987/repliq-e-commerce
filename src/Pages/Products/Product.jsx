@@ -5,7 +5,7 @@ import { authContext } from "../../Context/UserContext";
 const Product = ({ product }) => {
   const { Size, about, balance, name, picture, _id } = product;
   const { user } = useContext(authContext);
-  // console.log(user);
+
   const handleAddToBooking = () => {
     if (!user) {
       return toast.error("please login first");
@@ -18,7 +18,6 @@ const Product = ({ product }) => {
       userName: user.displayName,
       userEmail: user.email,
     };
-    // console.log(bookingsItem);
     fetch(
       `https://repliq-e-commerce-server.vercel.app/
 booking`,
@@ -34,7 +33,7 @@ booking`,
       .then((data) => {
         console.log("Save user", data);
         if (data.acknowledged) {
-          toast.success("user added successfully");
+          toast.success(`${name} add to cart`);
         }
       })
       .catch((error) => {
@@ -44,9 +43,9 @@ booking`,
   };
 
   return (
-    <div className="card  bg-base-100 border relative  shadow-2xl mx-auto my-5">
+    <div className="card  shadow-2xl ">
       <figure>
-        <img className="h-80 w-full rounded-md" src={picture} alt="Shoes" />
+        <img className=" h-80 w-full rounded-md" src={picture} alt="Shoes" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
@@ -54,21 +53,21 @@ booking`,
           <div className="badge badge-secondary">NEW</div>
         </h2>
         <div className="text-start font-bold">
-          <p>Price :{balance}</p>
-          <p>
+          <p>Price : {balance.slice(1, 10)}</p>
+          <p className="w-1/2 flex justify-between uppercase">
             {" "}
             size :
-            {Size.map((x) => (
-              <span className="mx-2">{x}</span>
+            {Size.map((x, i) => (
+              <span key={i}>{x}</span>
             ))}
           </p>
           <p className="my-2 font-normal">{about.slice(0, 50)}</p>
         </div>
-        <div className="card-actions justify-evenly absolute bottom-1">
-          <button onClick={handleAddToBooking} className="btn btn-accents">
-            Add to cart
-          </button>
-        </div>
+      </div>
+      <div className="card-actions justify-end">
+        <button onClick={handleAddToBooking} className="btn btn-accents">
+          Add to cart
+        </button>
       </div>
     </div>
   );

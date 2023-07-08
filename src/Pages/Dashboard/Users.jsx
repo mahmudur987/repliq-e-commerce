@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+import LoadingSpinner from "../../components/LoadingSpiner";
 
 const Users = () => {
   const [allusers, Setallusers] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     const url = "https://repliq-e-commerce-server.vercel.app/allusers ";
     fetch(url)
       .then((res) => res.json())
-      .then((data) => Setallusers(data));
+      .then((data) => {
+        Setallusers(data);
+
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("server error");
+      });
   }, []);
-  // console.log(allusers);
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   return (
     <div>
       {allusers.map((x, i) => (

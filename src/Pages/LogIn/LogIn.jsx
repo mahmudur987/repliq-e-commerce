@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import LoadingSpinner from "../../components/LoadingSpiner";
 // import { cheakUser } from "../../components/cheakUser";
 import { authContext } from "../../Context/UserContext";
 
@@ -39,7 +40,7 @@ cheakusers?phoneNumber=${phoneNumber}&password=${password}`
             })
             .catch((err) => {
               console.error(err);
-
+              Setloading(false);
               toast.error("please register first");
             });
         }
@@ -49,45 +50,32 @@ cheakusers?phoneNumber=${phoneNumber}&password=${password}`
   };
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center">
-        <div
-          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-          role="status"
-        >
-          <span className="visually-hidden">O</span>
-        </div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className=" min-h-[500px] bg-base-200">
+      <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Log In now!</h1>
           <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Dont have an account please{" "}
+            <Link to={"/signup"} className="btn-link">
+              Signup
+            </Link>{" "}
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
           <form onSubmit={handleLogin} className="card-body">
-            <p className="text-red-600 font-bold text-2xl">
-              {" "}
-              Admin Phone number:01671706882
-            </p>
-            <p className="text-red-600 font-bold text-2xl">
-              {" "}
-              Admin passwords:123456
-            </p>
+            <p className="font-bold text-2xl"> Admin</p>
+            <p className="text-red-600 "> Phone number:01671706882</p>
+            <p className="text-red-600 "> passwords:123456</p>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Phone Number</span>
               </label>
               <input
-                type="number"
+                type="text"
                 placeholder="Phone Number"
                 className="input input-bordered"
                 name="PhoneNumber"
@@ -99,7 +87,7 @@ cheakusers?phoneNumber=${phoneNumber}&password=${password}`
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 placeholder="password"
                 className="input input-bordered"
                 name="password"

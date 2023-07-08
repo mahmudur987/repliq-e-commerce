@@ -4,9 +4,9 @@ import HomeProducts from "./HomeProducts";
 
 const Home = () => {
   return (
-    <div className="w-full my-20">
-      <Banner></Banner>
-      <HomeProducts></HomeProducts>
+    <div className="container mx-auto my-3 ">
+      <Banner />
+      <HomeProducts />
     </div>
   );
 };

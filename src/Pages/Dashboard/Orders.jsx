@@ -13,16 +13,22 @@ const Orders = () => {
   // console.log(bookings);
 
   return (
-    <div>
+    <div className="grid grid-cols-1 lg:grid-cols-2">
       {bookings.map((x, i) => (
-        <div className="text-start m-4 border border-black p-3" key={i}>
-          <p className="text-3xl text-red-500">{i + 1}</p>
-          <p className="text-2xl font bold">Customar Name:{x.userName} </p>
-          <p className="text-2xl font bold">Customar Email:{x.userEmail} </p>
-          <p className="text-2xl font bold">Product Name:{x.productName} </p>
-          <p className="text-2xl font bold">Product Code:{x._id} </p>
+        <div className="text-start m-4 border shadow-2xl p-3 " key={i}>
+          <div className="max-w-2xl mx-auto">
+            <p className="text-2xl font-bold text-red-500">
+              Order Number : {i + 1}
+            </p>
+            <p className="text-xl font bold">Customar Name : {x.userName} </p>
+            <p className="text-xl font bold"> Email : {x.userEmail} </p>
+            <p className="text-xl font bold">Product Name : {x.productName} </p>
+            <p className="text-lg font bold">Product Code : {x._id} </p>
 
-          <p>Note :delevery Not complete</p>
+            <p className="uppercase text-sm bg-secondary text-white rounded-xl text-center">
+              Note :delevery Not complete
+            </p>
+          </div>
         </div>
       ))}
     </div>

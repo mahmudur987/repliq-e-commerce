@@ -8,7 +8,6 @@ export const useAdmin = (email) => {
 users?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.userType === "admin") {
           Setadmin(data);
           Setadminloading(false);

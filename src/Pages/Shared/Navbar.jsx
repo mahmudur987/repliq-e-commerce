@@ -31,18 +31,14 @@ const Navbar = () => {
       </li>
       {user ? (
         <>
-          <li onClick={handleSignOut}>
-            <Link>Sign out </Link>
-            <Link>{user?.displayName}</Link>
+          <li className="flex flex-col-reverse  items-center">
+            <Link onClick={handleSignOut}>Sign out </Link>
           </li>
         </>
       ) : (
         <>
           <li>
             <Link to={"/login"}>Log In</Link>
-          </li>
-          <li>
-            <Link to={"/signup"}>Sign Up</Link>
           </li>
         </>
       )}
@@ -80,8 +76,8 @@ const Navbar = () => {
           REPLIQ E-Commerce
         </a>
       </div>
-      <div className=" hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 font-bold">{menuItems}</ul>
+      <div className=" navbar-end hidden lg:flex ">
+        <ul className="menu menu-horizontal px-1 font-bold ">{menuItems}</ul>
       </div>
     </div>
   );

@@ -50,16 +50,13 @@ users`,
 
   return (
     <div>
-      <div className=" flex justify-center m-3 p-3 bg-base-200">
-        <form
-          onSubmit={handleAddUser}
-          className="mx-auto font-bold border border-black p-2 md:p-8"
-        >
-          <div className="form-control">
+      <div className="max-w-2xl flex justify-center m-3 p-3 bg-base-200">
+        <form onSubmit={handleAddUser} className="font-bold border p-2 md:p-8">
+          <div className="form-control ">
             <label className="label">
               <span className="label-text"> Name</span>
             </label>
-            <label className="input-group">
+            <label>
               <input
                 type="text"
                 placeholder=" Name"
@@ -72,7 +69,7 @@ users`,
             <label className="label">
               <span className="label-text">Email</span>
             </label>
-            <label className="input-group">
+            <label>
               <input
                 type="text"
                 placeholder="Email"
@@ -85,7 +82,7 @@ users`,
             <label className="label">
               <span className="label-text">Phone Number</span>
             </label>
-            <label className="input-group">
+            <label>
               <input
                 type="text"
                 placeholder="Phone Number"
@@ -98,7 +95,7 @@ users`,
             <label className="label">
               <span className="label-text">Password</span>
             </label>
-            <label className="input-group">
+            <label>
               <input
                 type="text"
                 placeholder="Phone Number"
@@ -111,7 +108,7 @@ users`,
             <label className="label">
               <span className="label-text">Picture Url</span>
             </label>
-            <label className="input-group">
+            <label>
               <input
                 type="text"
                 placeholder="picture Url"
@@ -124,7 +121,7 @@ users`,
             <label className="label">
               <span className="label-text">User Type</span>
             </label>
-            <label className="input-group">
+            <label>
               <input
                 type="text"
                 placeholder="admin/user"
@@ -133,7 +130,7 @@ users`,
               />
             </label>
           </div>
-          <button className="btn btn-secondary my-3"> submit</button>
+          <button className="btn btn-accent my-3"> Add User</button>
         </form>
       </div>
     </div>

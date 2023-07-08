@@ -40,77 +40,72 @@ products`,
 
   return (
     <div>
-      <div className=" flex justify-center m-3 p-3 bg-base-200">
+      <div className=" max-w-2xl flex justify-center m-3 p-3 bg-base-200">
         <form
           onSubmit={handleSubmit}
-          className="mx-auto font-bold border border-black p-1 md:p-8"
+          className=" w-full  font-bold border p-1 md:p-8"
         >
-          <div className="form-control">
+          <div className="form-control w-full">
             <label className="label">
               <span className="label-text"> Product Name</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                placeholder="Product Name"
-                name="ProductName"
-                className="input input-bordered"
-              />
-            </label>
+
+            <input
+              type="text"
+              placeholder="Product Name"
+              name="ProductName"
+              className="input input-bordered"
+            />
           </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Product Price</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                placeholder="Product Price"
-                className="input input-bordered"
-                name="ProductPrice"
-              />
-            </label>
+
+            <input
+              type="text"
+              placeholder="Product Price"
+              className="input input-bordered"
+              name="ProductPrice"
+            />
           </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Product Size</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                placeholder="Product Size"
-                className="input input-bordered"
-                name="ProductSize"
-              />
-            </label>
+
+            <input
+              type="text"
+              placeholder="Product Size"
+              className="input input-bordered"
+              name="ProductSize"
+            />
           </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">product Picture Url</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                placeholder="picture Url"
-                className="input input-bordered"
-                name="picture"
-              />
-            </label>
+
+            <input
+              type="text"
+              placeholder="picture Url"
+              className="input input-bordered"
+              name="picture"
+            />
           </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Product Details</span>
             </label>
-            <label className="input-group">
-              <input
-                type="text"
-                placeholder="Product Details"
-                className="input input-bordered"
-                name="details"
-              />
-            </label>
+
+            <input
+              type="text"
+              placeholder="Product Details"
+              className="input input-bordered"
+              name="details"
+            />
           </div>
-          <button className="btn btn-secondary my-3"> submit</button>
+          <button className="btn btn-info  my-3"> Add Product</button>
         </form>
       </div>
     </div>
