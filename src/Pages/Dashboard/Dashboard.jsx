@@ -9,8 +9,7 @@ const Dashboard = () => {
   const [admin, adminLoading] = useAdmin(user?.email);
   const [showmenu, setShowmenu] = useState(true);
   const windowsize = ScreenSize();
-  console.log(showmenu);
-  useEffect(() => {}, []);
+
   return (
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

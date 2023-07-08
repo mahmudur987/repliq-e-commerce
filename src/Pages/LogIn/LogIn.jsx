@@ -11,8 +11,6 @@ const LogIn = () => {
 
   const naviget = useNavigate();
 
-  console.log(user);
-
   const handleLogin = (e) => {
     Setloading(true);
     e.preventDefault();
@@ -24,8 +22,10 @@ const LogIn = () => {
 cheakusers?phoneNumber=${phoneNumber}&password=${password}`
     )
       .then((res) => res.json())
-      .then((data) => {
+      .then((result) => {
+        const { data, token } = result;
         console.log(data);
+        console.log(token);
         if (data.message) {
           toast.error(data.message);
           SetError(data.message);
@@ -34,6 +34,7 @@ cheakusers?phoneNumber=${phoneNumber}&password=${password}`
             .then((result) => {
               const user = result.user;
               console.log(user);
+              localStorage.setItem("Token", token);
               Setloading(false);
               SetError("");
               naviget("/");
@@ -42,11 +43,15 @@ cheakusers?phoneNumber=${phoneNumber}&password=${password}`
               console.error(err);
               Setloading(false);
               toast.error("please register first");
+              SetError(err.message);
             });
         }
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("server problem");
+        Setloading(false);
       });
-
-    console.log(phoneNumber, password);
   };
 
   if (loading) {
